@@ -1,0 +1,90 @@
+﻿.form-heading {
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Form Styles */
+.styled-form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        white-space: nowrap;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+.radio-group {
+    margin-top: 10px;
+    display: flex;
+    gap: 28px; /* Adds space between radio buttons */
+    width: 20%;
+}
+
+    .radio-group input {
+        margin: 0; /* Removes default margin */
+    }
+
+    .radio-group label {
+        margin-right: 15px;
+    }
+
+.alert-danger {
+    color: #d9534f;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Reduced space between checkbox and label */
+    width: 40%;
+    flex-direction: row-reverse; /* Reverses the order of the checkbox and label */
+}
+
+    .checkbox-group label {
+        white-space: nowrap; /* Ensures the label stays on a single line */
+        margin-left: 5px; /* Reduced margin between the checkbox and the label */
+    }

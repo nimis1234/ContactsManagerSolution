@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Contact Manager";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+    }
+
+    .auth-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .auth-section h3 {
+            color: #007bff;
+        }
+
+    .jumbotron {
+        background: linear-gradient(to right, #007bff, #6610f2);
+        color: white;
+        padding: 50px;
+        border-radius: 10px;
+    }
+
+    .btn-lg {
+        width: 100%;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <!-- Left Section - Information & Features -->
+        <div class="col-md-7">
+            <!-- Hero Section -->
+            <div class="jumbotron">
+                <h1 class="display-4 font-weight-bold">Manage Your Contacts with Ease</h1>
+                <p class="lead">Simplify contact management with our secure, easy-to-use platform.</p>
+                <a href="/Account/Register" class="btn btn-light btn-lg">Get Started</a>
+            </div>
+
+            <!-- Features Section -->
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm text-center">
+                        <i class="fas fa-users fa-3x text-primary"></i>
+                        <h4 class="mt-3">Organized Contacts</h4>
+                        <p class="text-muted">Categorize and manage contacts effortlessly.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm text-center">
+                        <i class="fas fa-mobile-alt fa-3x text-success"></i>
+                        <h4 class="mt-3">Access Anywhere</h4>
+                        <p class="text-muted">Manage contacts from any device, anytime.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm text-center">
+                        <i class="fas fa-shield-alt fa-3x text-danger"></i>
+                        <h4 class="mt-3">Secure & Private</h4>
+                        <p class="text-muted">Your data is protected with top-notch security.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section - Login/Register -->
+        <div class="col-md-5">
+            <div class="auth-section shadow-lg">
+                <h3 class="text-center mb-3">Join Us Today</h3>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <p class="text-center text-muted">Register or login to access your contacts securely.</p>
+                    <div class="d-grid gap-2">
+                        <a style="background-color:#007BFF"  href="/Account/Register" class="btn btn-primary btn-lg">Register</a>
+                        <a style="background-color:#007BFF"  href="/Account/Login" class="btn btn-outline-primary btn-lg">Login</a>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-center">Welcome, @User.Identity.Name!</p>
+                    <div class="d-grid gap-2" >
+                        <a style="background-color:#007BFF" href="/persons/index" class="btn btn-success btn-lg">Manage Contacts</a>
+                        <a style="background-color:#007BFF"  href="/Account/Logout" class="btn btn-danger btn-lg">Logout</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include FontAwesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ageRanges = (Dictionary<string, int>)ViewBag.personAges;
+}
+
+<h2>Age Distribution</h2>
+<canvas id="ageChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('ageChart').getContext('2d');
+    var ageChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ageRanges.Keys.ToList())), // Age ranges (e.g. 0-18, 19-30, etc.)
+            datasets: [{
+                label: 'Age Distribution',
+                data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ageRanges.Values.ToList())), // Number of people in each range
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Age Range'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Number of People'
+                    }
+                }
+            }
+        }
+    });
+</script>

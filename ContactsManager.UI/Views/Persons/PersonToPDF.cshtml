@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PersonResponse>
+
+@{
+    Layout = null;
+
+ }
+
+    <div class="container-fluid">
+
+        <div>
+            <table class="styled-table">
+                <thead>
+                   <tr>
+						<th>PersonName</th>
+						<th>Email</th>
+						<th>DateOfBirth</th>
+						<th>Gender</th>
+						<th>Country</th>
+						<th>Address</th>
+						<th>ReceiveNewsLetters</th>
+						<th>Age</th>
+						<th>Actions</th>
+					</tr>
+                </thead>
+                <tbody>
+                    @foreach (var person in Model)
+                    {
+                        <tr>
+                            <td>@person.PersonName</td>
+                            <td>@person.Email</td>
+                            <td>@person.DateOfBirth</td>
+                            <td>@person.Gender</td>
+                            <td>@person.Country</td>
+                            <td>@person.Address</td>
+                            <td>@person.ReceiveNewsLetters</td>
+                            <td>@person.Age</td>
+                         
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+

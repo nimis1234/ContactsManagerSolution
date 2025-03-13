@@ -1,0 +1,94 @@
+﻿@model PersonAddRequest;
+<head>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+      
+    </style>
+    <link rel="stylesheet" href="~/createPerson.css" />
+</head>
+
+    <h2 class="form-heading">Create Person</h2>
+
+    <form action="/Persons/CreatePerson" method="POST" class="styled-form">
+        @{
+
+            if (ViewBag.Errors != null && ViewBag.Errors.Count > 0)
+            {
+                <div class="active alert-danger" id="validationError">
+                    <ul>
+                        @foreach (var error in ViewBag.Errors)
+                        {
+                            <li>@error</li>
+                        }
+                    </ul>
+                </div>
+            }
+        }
+
+        <div class="form-group">
+            <label for="personName">Person Name:</label>
+            <input type="text" asp-for="PersonName" />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+		    <input type="email" asp-for="Email" />
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth:</label>
+		      <input type="date" asp-for="DateOfBirth" />
+        </div>
+
+    <div class="form-group">
+        <label asp-for="Gender">Gender:</label>
+        <div class="radio-group">
+            <label>
+                <input asp-for="Gender" type="radio" value="male" />
+                Male
+            </label>
+            <label>
+                <input asp-for="Gender" type="radio" value="female" />
+                Female
+            </label>
+            <label>
+                <input asp-for="Gender" type="radio" value="other" />
+                Other
+            </label>
+        </div>
+    </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+		   <input type="text" asp-for="Address" />
+           
+        </div>
+
+        <div class="form-group">
+        <label asp-for="CountryID">Country:</label>
+            <select asp-for="CountryID" class="form-control">
+
+                @foreach (var country in ViewBag.Countries)
+                {
+                    <option value="@country.Value">@country.Text</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group checkbox-group">
+        <input type="checkbox" asp-for="ReceiveNewsLetters">
+         <label for="receiveNewsLetters">Receive News Letters:</label>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create Person" class="submit-button">
+        </div>
+    </form>
+

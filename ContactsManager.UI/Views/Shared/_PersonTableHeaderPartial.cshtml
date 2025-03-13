@@ -1,0 +1,22 @@
+﻿@{
+    var columnHeaders = ViewBag.ColumnHeaders as Dictionary<string, string>;
+    string currentSortBy = ViewBag.CurrentSortBy ?? "";
+    string currentSortOrder = ViewBag.CurrentSortOrder ?? "asc";
+}
+
+<thead>
+    <tr>
+        @foreach (var column in columnHeaders) // here looping the viewbag with column headers
+        {
+            string columnName = column.Key;
+            string displayName = column.Value;
+            string nextSortOrder = (currentSortBy == columnName && currentSortOrder == "asc") ? "desc" : "asc";
+
+            <th>
+                <a asp-action="Index" asp-controller="Persons" asp-route-sortBy="@columnName"  asp-route-sortOrder="@nextSortOrder">
+                    @displayName @(currentSortBy == columnName ? (currentSortOrder == "asc" ? "↑" : "↓") : "")
+                </a>
+            </th>
+        }
+    </tr>
+</thead>

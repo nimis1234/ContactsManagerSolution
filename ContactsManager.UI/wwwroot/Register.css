@@ -1,0 +1,61 @@
+﻿/* Add a container for the registration form */
+.styled-form-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    /* Form Heading */
+    .styled-form-container h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+/* Ensure the styled form has consistent padding and appearance */
+.styled-form {
+    width: 100%;
+}
+
+    .styled-form .form-group {
+        margin-bottom: 15px;
+    }
+
+    .styled-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .styled-form input[type="text"], .styled-form input[type="email"], .styled-form input[type="password"], .styled-form input[type="file"], .styled-form select {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+        .styled-form input[type="text"]:focus, .styled-form input[type="email"]:focus, .styled-form input[type="password"]:focus, .styled-form select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+    .styled-form button {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .styled-form button:hover {
+            background-color: #0056b3;
+        }

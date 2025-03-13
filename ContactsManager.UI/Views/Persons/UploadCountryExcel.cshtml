@@ -1,0 +1,55 @@
+﻿@model List<CountryResponse>
+@{
+    ViewData["Title"] = "Upload Excel File";
+}
+
+
+
+<div style="width:50%;margin:20px auto">
+ <h2 class="mb-4">Upload Excel File</h2>
+
+ <!-- if error found in viewbag.error dispay it-->
+ @if (ViewBag.Error != null)
+ {
+	<div class="alert alert-danger">
+		@ViewBag.Error
+	</div>
+ }
+
+<!-- Upload Form -->
+<form asp-action="UploadCountries" asp-controller="Upload" method="post" enctype="multipart/form-data">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <input type="file" name="file" class="form-control" required />
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100">Upload</button>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+<!-- Download Sample Excel -->
+<div class="d-flex justify-content-between align-items-center">
+    <h3>Sample Excel File</h3>
+        <a asp-action="DownloadSampleExcel" asp-controller="persons" class="btn btn-success">Download Sample</a>
+</div>
+
+<hr />
+<!-- Display Uploaded Countries -->
+<h3>Uploaded Countries</h3>
+@if (Model.Any())
+{
+    <ul class="list-group">
+        @foreach (var country in Model)
+        {
+            <li class="list-group-item">@country.CountryName</li>
+        }
+    </ul>
+}
+else
+{
+    <p class="text-muted">No countries uploaded yet.</p>
+}
+</div>

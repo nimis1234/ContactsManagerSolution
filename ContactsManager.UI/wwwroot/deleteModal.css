@@ -1,0 +1,69 @@
+﻿/* Modal overlay (background) */
+#deleteModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1050; /* Ensure the modal is above other content */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center the modal horizontally */
+    align-items: center; /* Center the modal vertically */
+}
+
+/* Modal content (box) */
+.CustomModal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px; /* Limit the width of the modal */
+    width: 100%; /* Ensure the modal takes up full width within the max width */
+    position: relative; /* For positioning the close button */
+    margin-top:250px;
+    margin-left:600px;
+}
+
+/* Close button (×) */
+.close-button {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Edit Button - Green */
+.btn-edit {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #28a745; /* Bootstrap Green */
+    color: white !important;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s;
+    text-align: center;
+}
+
+    .btn-edit:hover {
+        background-color: #218838; /* Darker Green */
+        transform: scale(1.05); /* Slight Scale Effect */
+    }
+
+/* Delete Button - Red */
+.btn-delete {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #dc3545; /* Bootstrap Red */
+    color: white !important;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s;
+    text-align: center;
+}
+
+    .btn-delete:hover {
+        background-color: #c82333; /* Darker Red */
+        transform: scale(1.05); /* Slight Scale Effect */
+    }

@@ -1,0 +1,25 @@
+﻿@{
+ 
+    var modelState = ViewData["Errors"] as Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary;
+    var previousAction = ViewData["PreviousAction"] as string ; // Default to Index if not set
+    var previousController = ViewData["PreviousController"] as string ; // Default to Home if not set
+}
+
+@if (modelState != null && !modelState.IsValid)
+{
+    <div style="border: 2px solid red; padding: 15px; border-radius: 5px; background-color: #ffe6e6; padding: 20px; max-width: 600px; margin:auto; margin-top: 20px; margin-bottom:50px;">
+        <h4 style="color: red; text-align: center;">Please fix the following errors:</h4>
+        <ul style="color: darkred; font-size: 16px; list-style: none; padding: 0;">
+            @foreach (var error in modelState.Values.SelectMany(v => v.Errors))
+            {
+                <li> @error.ErrorMessage</li>
+            }
+        </ul>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <div style="text-align: center; margin-top: 20px;">
+                <a asp-controller="@previousController" asp-action="@previousAction" class="btn btn-primary">Go Back</a>
+            </div>
+        </div>
+    </div>
+}

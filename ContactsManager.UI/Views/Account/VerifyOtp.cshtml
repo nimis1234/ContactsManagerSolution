@@ -1,0 +1,72 @@
+﻿@model VerfiyOtpViewModel
+
+@{
+    ViewData["Title"] = "Verify OTP";
+}
+<link rel="stylesheet" href="~/Register.css" />
+<div class="styled-form-container">
+<h2>OTP Verification</h2>
+
+<p style="color:green">An email has been sent to your registered email address. Please enter the OTP sent.</p>
+
+	<form asp-action="VerifyOtpEntered" asp-controller="Account" method="POST">
+
+	<div asp-validation-summary="All" class="text-danger"></div>
+		
+	<input asp-for="Email" type="hidden" />
+
+
+	<div class="form-group">
+		<label asp-for="OTP"></label>
+		<input asp-for="OTP" class="form-control" />
+		<span asp-validation-for="OTP" class="text-danger"></span>
+	</div>
+
+
+	<div class="form-group" style="margin-top: 20px;">
+		<input type="submit" value="Verify" class="btn btn-primary" />
+	</div>
+
+	<p id="timer">
+		
+	</p>
+
+	<button id="resendOtp" class="btn btn-secondary" style="display:none;">Resend OTP</button>
+
+
+</form>
+</div>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+
+
+	<script>
+
+		let timeLeft=150;//15 minutes
+
+		const timer = document.getElementById("timer");
+		const resendOtp = document.getElementById("resendOtp");
+		setInterval(() => { UpdateTimer(); }, 1000);
+
+		function UpdateTimer() {
+			const minutes = Math.floor(timeLeft / 60);
+			const seconds = timeLeft % 60;
+
+			if (timeLeft <= 0) {
+				timerElement.textContent = "OTP has expired.";
+				resendOtp.style.display = "block";
+				clearInterval();
+			}
+			else
+			{
+		     timeLeft--;
+			timer.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+			}
+
+		}
+
+
+	</script>
+}

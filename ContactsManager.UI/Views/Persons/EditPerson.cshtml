@@ -1,0 +1,83 @@
+﻿@*
+    using asp.net core  tag helper
+*@
+
+@model PersonResponse;
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "EditPerson";
+}
+<head>
+<link rel="stylesheet" href="~/EditPerson.css" />
+</head>
+<h2 class="form-heading">Edit Person</h2>
+
+<form asp-action="EditPerson" asp-controller="Persons" method="POST" class="styled-form">
+    @{
+
+        if (ViewBag.Errors != null && ViewBag.Errors.Count > 0)
+        {
+            <div class="active alert-danger">
+                <ul>
+                    @foreach (var error in ViewBag.Errors)
+                    {
+                        <li>@error</li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+
+    <input  asp-for="PersonID" type="hidden" />
+    <div class="form-group">
+        <label asp-for="PersonName">Person Name:</label>
+        <input type="text" asp-for="PersonName">
+    </div>
+    <div class="form-group">
+        <label  asp-for="Email">Email:</label>
+        <input type="email" asp-for="Email">
+    </div>
+    <div class="form-group">
+        <label asp-for="DateOfBirth">Date of Birth:</label>
+        <input type="date"asp-for="DateOfBirth">
+    </div>
+    <div class="form-group">
+        <label asp-for="Gender">Gender:</label>
+        <div class="radio-group">
+            <label>
+                <input asp-for="Gender" type="radio" value="male" />
+                Male
+            </label>
+            <label>
+                <input asp-for="Gender" type="radio" value="female" />
+                Female
+            </label>
+            <label>
+                <input asp-for="Gender" type="radio" value="other" />
+                Other
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address" class="control-label"></label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CountryID" class="control-label">Country</label>
+        <select asp-for="CountryID" asp-items="@ViewBag.Countries" class="form-control">
+            <option value="">-- Select a Country --</option>
+        </select>
+    </div>
+    <div class="form-group checkbox-group">
+        <label asp-for="ReceiveNewsLetters" class="control-label"></label>
+        <input asp-for="ReceiveNewsLetters" type="checkbox" class="form-check-input" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update Person" class="submit-button">
+    </div>
+
+
+
+
+</form>
