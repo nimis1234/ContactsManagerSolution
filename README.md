@@ -34,7 +34,5 @@ ContactsManager is a Asp.net core web application for managing contacts. It allo
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 
-### Installation
 
-1. Clone the repository:
     
